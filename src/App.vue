@@ -9,6 +9,13 @@ index.js
 因此，./stores 实际上等价于 ./stores/index.ts。
  */
 import { useUserStore } from './stores'
+import axios from './utils/request'
+const getUser = () => {
+  axios.request({
+    url: 'patient/myUser',
+    method: 'get'
+  })
+}
 
 const store = useUserStore()
 </script>
@@ -30,6 +37,7 @@ const store = useUserStore()
       >登录</van-button
     >
     <van-button type="primary" @click="store.delUser">退出</van-button>
+    <van-button type="primary" @click="getUser">请求</van-button>
   </div>
 </template>
 

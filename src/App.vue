@@ -1,13 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Button as VanButton } from 'vant'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div>App <van-button>按钮</van-button></div>
+  <div class="main">main</div>
+  <div class="footer">footer</div>
 </template>
 
 <style scoped>
+.main {
+  color: var(--cp-primary);
+  border-color: var(--footer-color);
+}
 
+.footer {
+
+  color: var(--cp-primary);
+  background-color: var(--footer-color);
+}
 </style>

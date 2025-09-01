@@ -1,4 +1,4 @@
-import type { User } from '@/types/user' // 导入用户数据类型定义
+import type { User } from '@/types/user' // 导入用户数据类型定义：@ 映射到 src/
 import { defineStore } from 'pinia' // 导入 Pinia 的 store 定义函数
 import { ref } from 'vue' // 导入 Vue 的响应式变量创建函数
 

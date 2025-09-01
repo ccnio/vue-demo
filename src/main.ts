@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import persist from 'pinia-plugin-persistedstate' //pnpm i pinia-plugin-persistedstate # 持久化存储插件
 
 import App from './App.vue'
 import router from './router'
@@ -9,7 +10,7 @@ import 'vant/lib/index.css'
 import './styles/main.scss'
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(createPinia().use(persist)) // 使用 Pinia 并启用持久化插件
 app.use(router)
 
 app.mount('#app')

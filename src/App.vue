@@ -13,8 +13,26 @@ import axios from './utils/request'
 const getUser = () => {
   axios.request({
     url: 'patient/myUser',
-    method: 'get'
+    method: 'get',
   })
+}
+
+const login = () => {
+  axios
+    .request({
+      url: 'login/password',
+      method: 'post',
+      data: {
+        mobile: '13211112222',
+        password: 'abc12345',
+      },
+    })
+    .then((res) => {
+      console.log('login 成功', res)
+    })
+    .catch((err) => {
+      console.log('login 失败', err)
+    })
 }
 
 const store = useUserStore()
@@ -38,6 +56,8 @@ const store = useUserStore()
     >
     <van-button type="primary" @click="store.delUser">退出</van-button>
     <van-button type="primary" @click="getUser">请求</van-button>
+
+    <div><van-button type="default" @click="login">登录</van-button></div>
   </div>
 </template>
 

@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <cp-nav-bar></cp-nav-bar>
   <div>login
     <van-button>登录</van-button>
   </div>

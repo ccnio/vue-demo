@@ -1,6 +1,6 @@
 import router from '@/router'
 import { useUserStore } from '@/stores'
-import axios from 'axios' //pnpm i axios
+import axios, { type Method } from 'axios' //pnpm i axios
 import { showToast } from 'vant'
 
 const instance = axios.create({
@@ -61,3 +61,21 @@ instance.interceptors.response.use(
   },
 )
 export default instance
+
+type Data<T> = {
+  code: number
+  message: string
+  data: T
+}
+
+export const request = <T>(url: string, method: Method = 'GET', data?: object) => {
+  //强制将转换后的字符串类型限定为这五种
+  method = method.toUpperCase() as 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT'
+  if (method === 'GET' || method === 'DELETE') {
+    // get delete 请求
+    return instance.request<unknown, Data<T>>({ url, method, params: data })
+  } else {
+    // post put patch 请求
+    return instance.request<unknown, Data<T>>({ url, method, data })
+  }
+}

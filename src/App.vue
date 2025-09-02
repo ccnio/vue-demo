@@ -9,29 +9,22 @@ index.js
 因此，./stores 实际上等价于 ./stores/index.ts。
  */
 import { useUserStore } from './stores'
-import axios from './utils/request'
+import { request } from './utils/request'
+import type { User } from './types/user'
 const getUser = () => {
-  axios.request({
-    url: 'patient/myUser',
-    method: 'get',
-  })
+  request('patient/myUser', 'get', { test: 1 })
 }
 
 const login = () => {
-  axios
-    .request({
-      url: 'login/password',
-      method: 'post',
-      data: {
-        mobile: '13211112222',
-        password: 'abc12345',
-      },
-    })
+  request<User>('login/password', 'POST', {
+    mobile: '13211112222',
+    password: 'abc12345',
+  })
     .then((res) => {
-      console.log('login 成功', res)
+      console.log('成功', res.data.account)
     })
     .catch((err) => {
-      console.log('login 失败', err)
+      console.log('失败', err)
     })
 }
 
